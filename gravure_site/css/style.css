@@ -62,7 +62,7 @@ body {
   min-height: 100dvh;
   background: var(--obsidian);
   color: var(--text-primary);
-  font-family: 'Cormorant Garamond', 'Noto Serif TC', serif;
+  font-family: 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
   overflow-x: hidden;
   cursor: default;
 }
@@ -134,7 +134,7 @@ body::after {
 .sidebar-sub {
   font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase;
   color: var(--text-muted);
-  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-family: 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
   margin-top: 5px;
 }
 
