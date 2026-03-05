@@ -10,8 +10,8 @@ window.I18N = (function () {
 
   var T = {
     zh: {
-      appTitle: '寫真集',
-      appSub: '日本性感女神精選',
+      appTitle: '日本巨乳女神推薦',
+      appSub: '人氣火辣女神寫真偶像',
       searchPlaceholder: '搜尋女神姓名、作品名稱',
       count: function(n){ return '共 ' + n + ' 件'; },
       sortRank: '人氣排行', sortPrice: '價格排序',
