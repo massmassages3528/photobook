@@ -6,21 +6,25 @@
 
 /* ── Design Tokens ───────────────── */
 :root {
-  --bg-main: #0f1014;
-  --bg-elev: #17181f;
-  --bg-soft: #1d1f27;
+  --bg-main: #08070d;
+  --bg-card: #111018;
 
   --text-main: #f5f5f7;
-  --text-sub: rgba(255,255,255,.65);
-  --text-muted: rgba(255,255,255,.35);
+  --text-sub: #b9b4a5;
 
-  --accent: #ff4458;
+  /* ▼ 金色アクセント */
+  --accent-gold-1: #d4af37;
+  --accent-gold-2: #f6e27a;
+  --accent-gold-3: #b88917;
 
-  --radius-lg: 22px;
-  --radius-md: 16px;
-  --radius-sm: 12px;
+  --accent-gradient: linear-gradient(
+    135deg,
+    var(--accent-gold-1),
+    var(--accent-gold-2),
+    var(--accent-gold-3)
+  );
 
-  --ease: cubic-bezier(.4,0,.2,1);
+  --border-gold: rgba(212,175,55,0.35);
 }
 
 /* ── Reset ───────────────── */
@@ -55,9 +59,11 @@ body {
 }
 
 .sidebar-logo {
-  font-size: 20px;
-  font-weight: 600;
-  letter-spacing: -0.3px;
+  font-weight: 700;
+  font-size: 18px;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .sidebar-nav {
@@ -90,9 +96,11 @@ body {
 }
 
 .header-title {
-  font-size: 32px;
-  font-weight: 600;
-  letter-spacing: -0.5px;
+  font-size: 28px;
+  font-weight: 700;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .header-sub {
@@ -119,8 +127,8 @@ body {
 }
 
 .card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 30px rgba(0,0,0,.4);
+  border: 1px solid var(--border-gold);
+  box-shadow: 0 10px 40px rgba(212,175,55,0.15);
 }
 
 .card-img {
@@ -171,6 +179,13 @@ body {
   opacity: .85;
 }
 
+.cta-button {
+  background: var(--accent-gradient);
+  color: #111;
+  font-weight: 600;
+  border-radius: 999px;
+}
+
 /* ── Modal ───────────────── */
 .modal-overlay,
 .yt-player-overlay {
@@ -189,6 +204,13 @@ body {
   background: var(--bg-elev);
   border-radius: var(--radius-lg);
   overflow: hidden;
+}
+
+.modal-accent-line {
+  height: 2px;
+  width: 60px;
+  background: var(--accent-gradient);
+  margin-bottom: 20px;
 }
 
 .faq-section {
