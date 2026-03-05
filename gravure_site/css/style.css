@@ -189,6 +189,68 @@ body {
   overflow: hidden;
 }
 
+.faq-section {
+  max-width: 720px;
+  margin: 80px auto 120px;
+  padding: 0 24px;
+}
+
+.faq-section h2 {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.faq-section h3 {
+  margin-top: 30px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.faq-section p {
+  font-size: 14px;
+  color: var(--text-sub);
+  margin-top: 6px;
+}
+
+.intro-fetish {
+  max-width: 720px;
+  margin: 100px auto 60px;
+  padding: 0 24px;
+}
+
+.intro-fetish h2 {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.intro-fetish p {
+  font-size: 15px;
+  color: var(--text-sub);
+}
+
+.modal-sheet {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 768px) {
+  .modal-sheet {
+    grid-template-columns: 1fr;
+  }
+}
+
+.app-main-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+
 /* ── Responsive ───────────────── */
 @media (max-width: 768px) {
   .app-sidebar {
