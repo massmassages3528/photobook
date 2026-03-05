@@ -146,9 +146,16 @@
 
 
 <!-- ── Scripts: 読み込み順を守る（data → i18n → app） ──────────── -->
-<script src="js/data.js"></script>
-<script src="js/i18n.js"></script>
-<script src="js/app.js"></script>
+<script src="js/data.js" defer></script>
+<script src="js/i18n.js" defer></script>
+<script src="js/app.js" defer></script>
 
+<!--### 5. 内部リンク・サイト構造
+```
+/ (トップ：ランキング)
+├── /actress/[名前]/     ← 女優別ページ
+├── /category/bikini/    ← カテゴリ別
+├── /guide/buy-from-tw/  ← 購買ガイド
+└── /new/                ← 新刊情報-->
 </body>
 </html>
