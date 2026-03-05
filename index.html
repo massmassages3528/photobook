@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>寫真集 / Photo Books — Japan Gravure Idol Collection</title>
+<meta name="description" content="Japan Gravure Idol Photo Book Collection — 日本性感女神精選 — 일본 그라비아 아이돌 특선" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Noto+Sans+KR:wght@400;700;900&family=Shippori+Mincho:wght@400;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+
+<style>
+/* ── Reset & Base ─────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  min-height:100dvh;
+  background:#0a0a0f;
+  color:#e8e0d4;
+  font-family:'Shippori Mincho','Noto Serif TC',serif;
+  overflow-x:hidden;
+}
+button{cursor:pointer;border:none;background:none;font:inherit}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+
+/* ── CSS Variables ───────────────────────────────────────── */
+:root{
+  --gold:#c9a96e;
+  --gold-light:#e8c98a;
+  --cream:#e8e0d4;
+  --dark:#0a0a0f;
+  --sidebar-w:220px;
+  --header-h:180px;
+  --transition:.22s cubic-bezier(.4,0,.2,1);
+}
+
+/* ── Noise overlay ───────────────────────────────────────── */
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:9999;opacity:.35;
+}
+
+/* ── Layout ──────────────────────────────────────────────── */
+.app-root{display:flex;min-height:100dvh}
+
+/* Sidebar (desktop) */
+.app-sidebar{
+  width:var(--sidebar-w);
+  flex-shrink:0;
+  position:sticky;top:0;height:100dvh;
+  display:flex;flex-direction:column;gap:0;
+  border-right:1px solid rgba(201,169,110,.15);
+  background:linear-gradient(180deg,#0d0d14 0%,#0a0a0f 100%);
+  padding:32px 0 24px;
+  z-index:100;
+}
+.sidebar-logo{
+  padding:0 24px;
+  font-size:22px;font-weight:800;letter-spacing:.06em;
+  color:var(--gold-light);line-height:1.2;
+  font-family:'Shippori Mincho','Noto Serif TC',serif;
+}
+.sidebar-sub{
+  padding:4px 24px 0;
+  font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(201,169,110,.5);font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+}
+.sidebar-divider{height:1px;background:rgba(201,169,110,.1);margin:20px 24px}
+.sidebar-nav{display:flex;flex-direction:column;gap:2px;padding:0 12px;flex:1}
+.sidebar-nav-item{
+  display:flex;align-items:center;gap:12px;
+  padding:10px 14px;border-radius:8px;
+  font-size:13px;letter-spacing:.05em;
+  color:rgba(232,224,212,.5);
+  transition:background var(--transition),color var(--transition);
+}
+.sidebar-nav-item:hover{background:rgba(201,169,110,.08);color:var(--cream)}
+.sidebar-nav-item.active{
+  background:rgba(201,169,110,.12);
+  color:var(--gold-light);
+  border-left:2px solid var(--gold);
+}
+.sidebar-nav-icon{font-size:16px;width:22px;text-align:center}
+.sidebar-lang{padding:0 12px 0;margin-top:auto}
+.sidebar-lang-label{
+  padding:0 14px 10px;
+  font-size:10px;letter-spacing:.15em;text-transform:uppercase;
+  color:rgba(201,169,110,.4);font-family:'Cormorant Garamond',serif;
+}
+.sidebar-lang-btns{display:flex;flex-direction:column;gap:2px}
+.sidebar-lang-btn{
+  padding:8px 14px;border-radius:6px;
+  font-size:12px;letter-spacing:.05em;text-align:left;
+  color:rgba(232,224,212,.45);
+  transition:background var(--transition),color var(--transition);
+}
+.sidebar-lang-btn:hover{background:rgba(201,169,110,.08);color:var(--cream)}
+.sidebar-lang-btn.active{background:rgba(201,169,110,.15);color:var(--gold-light);font-weight:700}
+
+/* Main column */
+.app-main-col{
+  flex:1;min-width:0;
+  display:flex;flex-direction:column;
+}
+
+/* Header */
+.app-header{
+  padding:28px 32px 20px;
+  border-bottom:1px solid rgba(201,169,110,.1);
+  background:rgba(10,10,15,.85);
+  backdrop-filter:blur(20px);
+  position:sticky;top:0;z-index:50;
+}
+.header-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:16px}
+.header-title{
+  font-size:28px;font-weight:800;letter-spacing:.04em;
+  color:var(--gold-light);line-height:1;
+  font-family:'Shippori Mincho','Noto Serif TC',serif;
+}
+.header-sub{
+  font-size:11px;letter-spacing:.2em;margin-top:6px;
+  color:rgba(201,169,110,.5);font-family:'Cormorant Garamond',serif;
+  font-style:italic;text-transform:uppercase;
+}
+.header-lang-row{display:flex;gap:6px}
+.lang-btn{
+  padding:5px 10px;border-radius:5px;font-size:11px;
+  letter-spacing:.05em;border:1px solid rgba(201,169,110,.2);
+  color:rgba(232,224,212,.5);
+  transition:all var(--transition);
+}
+.lang-btn:hover{border-color:rgba(201,169,110,.5);color:var(--cream)}
+.lang-btn.active{background:rgba(201,169,110,.15);border-color:var(--gold);color:var(--gold-light);font-weight:700}
+
+/* Search */
+.search-box{
+  display:flex;align-items:center;gap:10px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(201,169,110,.15);
+  border-radius:10px;padding:10px 14px;
+  transition:border-color var(--transition);
+}
+.search-box:focus-within{border-color:rgba(201,169,110,.4)}
+.search-icon{color:rgba(201,169,110,.5);font-size:15px}
+.search-input{
+  flex:1;background:none;border:none;outline:none;
+  font-size:13px;color:var(--cream);
+  font-family:'Shippori Mincho','Noto Serif TC',serif;
+}
+.search-input::placeholder{color:rgba(232,224,212,.3)}
+.search-clear{
+  width:20px;height:20px;border-radius:50%;
+  background:rgba(255,255,255,.08);
+  font-size:10px;color:rgba(232,224,212,.5);
+  display:flex;align-items:center;justify-content:center;
+  transition:background var(--transition);
+  flex-shrink:0;
+}
+.search-clear:hover{background:rgba(255,255,255,.15)}
+
+/* Sort row */
+.sort-row{display:flex;align-items:center;justify-content:space-between;margin-top:12px}
+.sort-btns{display:flex;gap:6px}
+.sort-btn{
+  padding:5px 14px;border-radius:5px;font-size:11px;
+  letter-spacing:.08em;border:1px solid rgba(201,169,110,.2);
+  color:rgba(232,224,212,.5);
+  transition:all var(--transition);
+}
+.sort-btn:hover{border-color:rgba(201,169,110,.5);color:var(--cream)}
+.sort-btn.active{background:rgba(201,169,110,.15);border-color:var(--gold);color:var(--gold-light);font-weight:700}
+.result-count{font-size:11px;color:rgba(201,169,110,.45);letter-spacing:.1em;font-family:'Cormorant Garamond',serif;font-style:italic}
+
+/* Card grid */
+.card-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+  gap:20px;padding:28px 32px 32px;
+}
+@media(max-width:640px){
+  .card-grid{grid-template-columns:repeat(2,1fr);gap:12px;padding:16px}
+}
+
+/* Card */
+.card{
+  border-radius:12px;overflow:hidden;
+  background:#111118;
+  cursor:pointer;
+  transition:transform var(--transition),box-shadow var(--transition);
+  position:relative;
+}
+.card:hover{transform:translateY(-4px)}
+.card-img{position:relative;aspect-ratio:3/4;overflow:hidden;background:#0d0d14}
+.card-img-inner{position:absolute;inset:0}
+.card-fallback{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+}
+.card-fallback-char{
+  font-size:80px;font-weight:900;font-family:serif;
+  opacity:.12;
+  user-select:none;
+}
+.card-cover{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;object-position:center top;
+  opacity:0;transition:opacity .5s ease;
+}
+.card-cover.loaded{opacity:1}
+.card-grad{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(0,0,0,.9) 0%,rgba(0,0,0,.2) 45%,transparent 70%);
+}
+.card-rank{
+  position:absolute;top:10px;left:10px;
+  font-size:10px;letter-spacing:.1em;
+  padding:3px 7px;border-radius:4px;
+  font-family:'Cormorant Garamond',serif;font-weight:600;
+  backdrop-filter:blur(8px);background:rgba(0,0,0,.4);
+}
+.card-tag{
+  position:absolute;top:10px;right:10px;
+  font-size:9px;letter-spacing:.1em;
+  padding:3px 7px;border-radius:4px;
+  color:#000;font-weight:800;
+  font-family:'Cormorant Garamond',serif;
+}
+.card-yt-badge{
+  position:absolute;bottom:44px;left:10px;
+  display:flex;align-items:center;gap:4px;
+  font-size:9px;color:rgba(255,255,255,.7);
+  background:rgba(0,0,0,.5);backdrop-filter:blur(6px);
+  padding:3px 7px;border-radius:4px;
+  letter-spacing:.06em;
+}
+.card-title-text{
+  position:absolute;bottom:10px;left:10px;right:10px;
+  font-size:11px;line-height:1.35;
+  color:rgba(255,255,255,.85);letter-spacing:.04em;
+  text-shadow:0 1px 8px rgba(0,0,0,.9);
+}
+.card-body{padding:12px 14px 14px}
+.card-name{font-size:14px;font-weight:700;letter-spacing:.06em;color:var(--cream);margin-bottom:4px}
+.card-meta{font-size:10px;color:rgba(232,224,212,.4);letter-spacing:.05em;margin-bottom:8px;font-family:'Cormorant Garamond',serif}
+.card-price{
+  display:inline-block;
+  font-size:11px;font-weight:700;letter-spacing:.08em;
+  padding:3px 10px;border-radius:4px;
+}
+.no-results{
+  grid-column:1/-1;
+  text-align:center;padding:80px 0;
+  color:rgba(201,169,110,.35);font-size:15px;
+  letter-spacing:.1em;
+}
+
+/* Tab bar (mobile) */
+.app-tabbar{
+  display:none;
+  position:fixed;bottom:0;left:0;right:0;
+  background:rgba(10,10,15,.96);backdrop-filter:blur(20px);
+  border-top:1px solid rgba(201,169,110,.12);
+  padding:8px 0 max(8px,env(safe-area-inset-bottom,0));
+  z-index:200;
+}
+.tab-btn{
+  flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;
+  padding:4px 0;
+  color:rgba(232,224,212,.35);
+  transition:color var(--transition);
+}
+.tab-btn.active{color:var(--gold-light)}
+.tab-icon{font-size:20px;line-height:1}
+.tab-label{font-size:10px;letter-spacing:.06em}
+
+/* ── Modal ───────────────────────────────────────────────── */
+.modal-overlay{
+  position:fixed;inset:0;z-index:500;
+  background:rgba(0,0,0,.75);backdrop-filter:blur(8px);
+  display:flex;align-items:flex-end;justify-content:center;
+  opacity:0;pointer-events:none;
+  transition:opacity .3s ease;
+}
+.modal-overlay.open{opacity:1;pointer-events:all}
+
+.modal-sheet{
+  width:100%;max-width:900px;max-height:92dvh;
+  background:#0f0f18;
+  border-radius:20px 20px 0 0;
+  display:grid;grid-template-columns:1fr;
+  overflow:hidden;
+  transform:translateY(40px);
+  transition:transform .35s cubic-bezier(.4,0,.2,1);
+}
+.modal-overlay.open .modal-sheet{transform:translateY(0)}
+
+/* PC: side by side */
+@media(min-width:680px){
+  .modal-overlay{align-items:center}
+  .modal-sheet{
+    grid-template-columns:300px 1fr;
+    max-height:88dvh;
+    border-radius:16px;
+    transform:scale(.95);
+  }
+  .modal-overlay.open .modal-sheet{transform:scale(1)}
+  .modal-handle{display:none}
+}
+
+.modal-left{position:relative;min-height:260px}
+.modal-handle{padding:10px 0 0;display:flex;justify-content:center}
+.modal-handle-bar{width:40px;height:4px;border-radius:2px;background:rgba(255,255,255,.15)}
+.modal-hero{position:absolute;inset:0}
+.modal-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
+.modal-hero-grad{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(15,15,24,1) 0%,rgba(15,15,24,.4) 40%,transparent 70%);
+}
+.modal-hero-fallback{
+  position:absolute;inset:0;background:#0d0d14;
+  display:flex;align-items:center;justify-content:center;
+}
+.modal-hero-fallback-char{font-size:120px;font-family:serif;font-weight:900;opacity:.08;user-select:none}
+.modal-hero-info{
+  position:absolute;bottom:16px;left:16px;right:16px;
+}
+.modal-tag-badge{
+  display:inline-block;font-size:10px;font-weight:800;
+  letter-spacing:.12em;padding:4px 10px;border-radius:4px;
+  color:#000;margin-bottom:10px;
+}
+.modal-title-main{
+  font-size:20px;font-weight:800;line-height:1.3;
+  color:#fff;letter-spacing:.04em;margin-bottom:6px;
+}
+.modal-name-sub{font-size:13px;color:rgba(255,255,255,.65);letter-spacing:.06em}
+
+.modal-right{overflow-y:auto;max-height:60dvh}
+@media(min-width:680px){.modal-right{max-height:88dvh}}
+.modal-body-content{padding:0 0 24px}
+.modal-accent-line{height:2px;margin-bottom:0}
+
+/* CTA area */
+.cta-area{padding:16px 16px 12px;display:flex;flex-direction:column;gap:8px}
+.btn-amazon{
+  display:flex;align-items:center;gap:10px;
+  padding:13px 16px;border-radius:10px;
+  background:linear-gradient(135deg,#ff9900,#e88b00);
+  font-size:13px;font-weight:700;letter-spacing:.04em;color:#000;
+  transition:filter var(--transition),transform var(--transition);
+}
+.btn-amazon:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.btn-yt-link{
+  display:flex;align-items:center;gap:10px;
+  padding:11px 16px;border-radius:10px;
+  border:1px solid rgba(255,0,0,.3);
+  font-size:12px;letter-spacing:.04em;color:rgba(232,224,212,.8);
+  transition:background var(--transition),border-color var(--transition);
+}
+.btn-yt-link:hover{background:rgba(255,0,0,.08);border-color:rgba(255,0,0,.5)}
+
+/* YT thumb */
+.modal-section-label{
+  font-size:10px;letter-spacing:.15em;text-transform:uppercase;
+  color:rgba(201,169,110,.5);font-family:'Cormorant Garamond',serif;
+  margin-bottom:8px;padding:0 16px;
+}
+.yt-thumb-card{
+  position:relative;aspect-ratio:16/9;overflow:hidden;
+  border-radius:10px;cursor:pointer;margin:0 16px;
+}
+.yt-thumb-card img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+.yt-thumb-card:hover img{transform:scale(1.04)}
+.yt-overlay-dark{position:absolute;inset:0;background:rgba(0,0,0,.35)}
+.yt-play-center{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.yt-play-circle{
+  width:52px;height:52px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(0,0,0,.5);backdrop-filter:blur(8px);
+  transition:transform .2s ease;
+}
+.yt-thumb-card:hover .yt-play-circle{transform:scale(1.1)}
+.yt-red-badge{
+  position:absolute;top:8px;right:8px;
+  display:flex;align-items:center;gap:4px;
+  background:rgba(0,0,0,.65);backdrop-filter:blur(8px);
+  padding:4px 8px;border-radius:4px;
+  font-size:10px;color:rgba(255,255,255,.8);letter-spacing:.06em;
+}
+.yt-label-left{
+  position:absolute;bottom:8px;left:8px;
+  font-size:10px;color:rgba(255,255,255,.7);
+  background:rgba(0,0,0,.55);padding:3px 8px;border-radius:4px;letter-spacing:.06em;
+}
+
+/* Modal desc & table */
+.modal-desc{
+  margin:12px 16px;font-size:13px;line-height:1.75;
+  color:rgba(232,224,212,.7);letter-spacing:.04em;
+}
+.details-table{margin:0 16px;border-radius:8px;overflow:hidden;border:1px solid rgba(201,169,110,.1)}
+.detail-row{
+  display:flex;padding:10px 14px;
+  border-bottom:1px solid rgba(201,169,110,.08);
+  gap:12px;
+}
+.detail-label{
+  width:90px;flex-shrink:0;font-size:10px;letter-spacing:.1em;
+  text-transform:uppercase;color:rgba(201,169,110,.5);
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  padding-top:1px;
+}
+.detail-value{font-size:13px;color:var(--cream);letter-spacing:.04em;flex:1}
+
+/* Close button */
+.modal-close-btn{
+  position:absolute;top:12px;right:12px;z-index:10;
+  width:32px;height:32px;border-radius:50%;
+  background:rgba(0,0,0,.6);backdrop-filter:blur(8px);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;color:rgba(255,255,255,.7);
+  transition:background var(--transition),color var(--transition);
+}
+.modal-close-btn:hover{background:rgba(255,255,255,.15);color:#fff}
+
+/* ── YT Player Overlay ───────────────────────────────────── */
+.yt-player-overlay{
+  position:fixed;inset:0;z-index:1000;
+  background:rgba(0,0,0,.92);backdrop-filter:blur(16px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;
+  transition:opacity .3s ease;
+}
+.yt-player-overlay.open{opacity:1;pointer-events:all}
+.yt-player-inner{
+  width:min(92vw,960px);aspect-ratio:16/9;
+  border-radius:12px;overflow:hidden;
+  box-shadow:0 24px 80px rgba(0,0,0,.8);
+}
+.yt-player-frame{width:100%;height:100%}
+.yt-close-btn{
+  margin-top:20px;
+  padding:10px 24px;border-radius:8px;
+  background:rgba(255,255,255,.1);
+  font-size:13px;letter-spacing:.1em;
+  color:rgba(255,255,255,.7);
+  transition:background var(--transition);
+}
+.yt-close-btn:hover{background:rgba(255,255,255,.2)}
+
+/* ── Animations ──────────────────────────────────────────── */
+@keyframes fadeInUp{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* ── Mobile overrides ────────────────────────────────────── */
+@media(max-width:767px){
+  .app-sidebar{display:none}
+  .app-tabbar{display:flex}
+  .app-header{padding:16px 16px 12px}
+  .header-title{font-size:22px}
+  .header-top{margin-bottom:12px}
+  .card-grid{padding-bottom:72px}
+}
+</style>
+</head>
+<body>
+
+<div class="app-root" id="app">
+  <!-- Sidebar (PC) -->
+  <aside class="app-sidebar" id="sidebar">
+    <div>
+      <div class="sidebar-logo" id="sb-logo">寫真集</div>
+      <div class="sidebar-sub" id="sb-sub">日本性感女神精選</div>
+    </div>
+    <div class="sidebar-divider"></div>
+    <nav class="sidebar-nav" id="sb-nav"></nav>
+    <div class="sidebar-lang">
+      <div class="sidebar-lang-label" id="sb-lang-label">言語 / 語言</div>
+      <div class="sidebar-lang-btns" id="sb-lang-btns"></div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <div class="app-main-col">
+    <header class="app-header">
+      <div class="header-top">
+        <div>
+          <h1 class="header-title" id="h-title">寫真集</h1>
+          <p class="header-sub" id="h-sub">日本性感女神精選</p>
+        </div>
+        <div class="header-lang-row" id="h-lang"></div>
+      </div>
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="search" class="search-input" id="search-input" placeholder="搜尋女神姓名、作品名稱" />
+        <button class="search-clear" id="search-clear" style="display:none">✕</button>
+      </div>
+      <div class="sort-row">
+        <div class="sort-btns" id="sort-btns"></div>
+        <span class="result-count" id="result-count">共 12 件</span>
+      </div>
+    </header>
+
+    <main>
+      <div class="card-grid" id="card-grid"></div>
+    </main>
+  </div>
+
+  <!-- Tab bar (mobile) -->
+  <nav class="app-tabbar" id="tabbar"></nav>
+</div>
+
+<!-- Detail Modal -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal-sheet" id="modal-sheet" style="border:1px solid rgba(201,169,110,.1)">
+    <div class="modal-left" id="modal-left">
+      <button class="modal-close-btn" id="modal-close-btn">✕</button>
+      <div class="modal-hero" id="modal-hero">
+        <div class="modal-hero-fallback" id="modal-hero-fallback">
+          <span class="modal-hero-fallback-char" id="modal-hero-fallback-char"></span>
+        </div>
+        <img class="modal-hero-img" id="modal-hero-img" src="" alt="" style="display:none" />
+        <div class="modal-hero-grad"></div>
+        <div class="modal-hero-info">
+          <div class="modal-tag-badge" id="modal-tag-badge"></div>
+          <div class="modal-title-main" id="modal-title-main"></div>
+          <div class="modal-name-sub" id="modal-name-sub"></div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-right" id="modal-right">
+      <div class="modal-body-content">
+        <div class="modal-accent-line" id="modal-accent-line"></div>
+        <div class="cta-area" id="modal-cta"></div>
+        <div style="margin:0 0 12px">
+          <div class="modal-section-label" id="modal-yt-label-text">📹 幕後花絮影片</div>
+          <div class="yt-thumb-card" id="yt-thumb-card">
+            <img id="yt-thumb-img" src="" alt="YouTube thumbnail" />
+            <div class="yt-overlay-dark"></div>
+            <div class="yt-play-center">
+              <div class="yt-play-circle" id="yt-play-circle">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="white" style="margin-left:4px"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+            <div class="yt-red-badge">
+              <svg width="13" height="9" viewBox="0 0 24 17" fill="white"><path d="M23.5 2.5s-.3-1.9-1.1-2.7c-1.1-1.1-2.3-1.1-2.8-1.2C16.6-.1 12 0 12 0S7.4-.1 4.4.6C3.9.7 2.7.7 1.6 1.8.8 2.6.5 4.5.5 4.5S.2 6.7.2 8.9v2.1c0 2.2.3 4.4.3 4.4s.3 1.9 1.1 2.7c1.1 1.1 2.5 1.1 3.1 1.2C6.8 19.4 12 19.5 12 19.5s4.6 0 7.6-.8c.5-.1 1.7-.7 2.8-1.8.8-.8 1.1-2.7 1.1-2.7s.3-2.2.3-4.4V7c0-2.2-.3-4.5-.3-4.5zM9.7 13.5V5.4l7.6 4.1-7.6 4z"/></svg>
+              ▶ <span id="yt-play-label">再生する</span>
+            </div>
+            <div class="yt-label-left">📹 メイキング動画</div>
+          </div>
+        </div>
+        <p class="modal-desc" id="modal-desc"></p>
+        <div class="details-table" id="modal-details-table"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- YouTube Player Overlay -->
+<div class="yt-player-overlay" id="yt-player-overlay">
+  <div class="yt-player-inner">
+    <div class="yt-player-frame" id="yt-player-frame"></div>
+  </div>
+  <button class="yt-close-btn" id="yt-close-btn">✕ 閉じる</button>
+</div>
+
+<script>
+// ─── Data ────────────────────────────────────────────────────────────────────
+const ASSOCIATE_ID = 'yoursite-22'
+const affiliateLink = asin => `https://www.amazon.co.jp/dp/${asin}/ref=nosim?tag=${ASSOCIATE_ID}`
+const amazonImg = asin => `https://images-na.ssl-images-amazon.com/images/P/${asin}.01.LZZZZZZZ.jpg`
+
+const idols = [
+  { id:1,rank:1,name:'加藤玲菜',reading:'かとうれな',nameZh:'加藤玲菜',nameKo:'카토 레나',nameEn:'Rena Kato',title:'日本一、ビキニが似合う19歳',titleZh:'日本第一適合比基尼的19歲',titleKo:'일본 최고, 비키니가 어울리는 19세',titleEn:"Japan's #1 Bikini Body at 19",publisher:'集英社 週プレ',release:'2026.02',price:'デジタル版',asin:'B0GLX9WVS4',accent:'#FF4081',bg:'#1a0010',tag:{zh:'2026新星',ko:'2026 신성',en:'2026 RISING'},desc:{zh:'現役護理系學生兼寫真女神，以「かとれな」暱稱在SNS爆紅。19歲清純外表下蘊藏驚人魅力，2026年格拉維亞界最受矚目的新生代。',ko:"현역 간호학과 학생이자 그라비아 여신. SNS에서 'かとれな'라는 애칭으로 폭발적 인기. 2026년 그라비아계 최고 주목주.",en:"Active nursing student turned gravure sensation. Known as 'Katorena' online — 19 years old and already 2026's most-watched newcomer."},youtubeId:'zhzqdUJl0z8'},
+  { id:2,rank:2,name:'豊島心桜',reading:'とよしまこころ',nameZh:'豐島心櫻',nameKo:'토요시마 코코사',nameEn:'Kokosa Toyoshima',title:'心桜ばかり',titleZh:'滿滿都是心櫻',titleKo:'온통 코코사',titleEn:'All About Kokosa',publisher:'集英社',release:'2023.09.29',price:'¥3,300',asin:'4087901874',accent:'#FF80AB',bg:'#1a0014',tag:{zh:'1st寫真集',ko:'1st 화보집',en:'DEBUT BOOK'},desc:{zh:'清純外表下藏著令人心動的魅力。1st寫真集在巴里島拍攝，充滿青春活力，完全展現了她最自然、最真實的一面。',ko:'청순한 외모 속에 숨겨진 설레는 매력. 1st 화보집은 발리에서 촬영, 가장 자연스럽고 생생한 모습을 담아냈다.',en:'Beneath her innocent looks lies a captivating allure. Her debut photobook shot in Bali captures her most natural, authentic self.'},youtubeId:'g99mPsdrXS8'},
+  { id:3,rank:3,name:'沢口愛華',reading:'さわぐちあいか',nameZh:'澤口愛華',nameKo:'사와구치 아이카',nameEn:'Aika Sawaguchi',title:'でらあいか',titleZh:'超愛愛華',titleKo:'데라아이카',titleEn:'Dera Aika',publisher:'講談社',release:'2019.03.27',price:'¥3,080',asin:'4065150280',accent:'#FF6F00',bg:'#160900',tag:{zh:'Miss雜誌冠軍',ko:'미스매거진 그랑프리',en:'MISS MAG GRAND PRIX'},desc:{zh:'2018年Miss Magazine冠軍。在夏威夷與名古屋故鄉拍攝，「でら」是名古屋方言的「超級」，純真魅力滿溢的1st寫真集。',ko:'미스 매거진 2018 그랑프리. 하와이와 나고야에서 촬영. 「でら」는 나고야 방언으로 「매우」, 순수한 매력이 넘치는 1st 화보집.',en:"Miss Magazine 2018 Grand Prix. Shot in Hawaii and Nagoya. 'Dera' means 'super' in the Nagoya dialect — a sparkling debut full of charm."},youtubeId:'6qGpsTpw5Pw'},
+  { id:4,rank:4,name:'菊地姫奈',reading:'きくちひな',nameZh:'菊地姬奈',nameKo:'기쿠치 히나',nameEn:'Hina Kikuchi',title:'memory',titleZh:'memory',titleKo:'메모리',titleEn:'memory',publisher:'講談社',release:'2025.03.19',price:'¥3,300',asin:'4065379857',accent:'#00BCD4',bg:'#001418',tag:{zh:'2024年度グランプリ',ko:'2024 그랑프리',en:'2024 GRAND PRIX'},desc:{zh:'グラジャパ！アワード2024グランプリ。3rd写真集『memory』初版3万部が即重版。令和グラビア界の頂点に君臨。',ko:'그라지아파 어워드 2024 그랑프리. 3rd 화보집 『memory』 초판 3만 부 즉시 증쇄. 레이와 그라비아계 정점.',en:"Grajapa Award 2024 Grand Prix. 3rd photobook 'memory' sold 30,000 copies instantly — the undisputed queen of Reiwa gravure."},youtubeId:'xxKhGGn-JOE'},
+  { id:5,rank:5,name:'溝端葵',reading:'みぞばたあおい',nameZh:'溝端葵',nameKo:'미조바타 아오이',nameEn:'Aoi Mizobata',title:'ガチでブレイクする5秒前',titleZh:'爆紅前的5秒鐘',titleKo:'진짜 브레이크하기 5초 전',titleEn:'5 Seconds Before Breaking Through',publisher:'集英社 週プレ',release:'2025.03',price:'デジタル版',asin:'B0DZM9ZRPJ',accent:'#00E676',bg:'#001a08',tag:{zh:'2025年グランプリ',ko:'2025 그랑프리',en:'2025 GRAND PRIX'},desc:{zh:'グラジャパ！アワード2025グランプリ。2025年3月デビュー即話題を席巻、同年6月には初表紙。笑顔と圧倒的スタイルで2025年最大ブレイク。',ko:'그라지아파 어워드 2025 그랑프리. 2025년 3월 데뷔 즉시 화제 석권, 6월 첫 표지. 웃음과 압도적 스타일로 2025년 최대 브레이크.',en:'Grajapa Award 2025 Grand Prix. Debuted March 2025, first cover by June — the biggest breakout of 2025.'},youtubeId:'6qUT0vdyCW8'},
+  { id:6,rank:6,name:'高野真央',reading:'たかのまお',nameZh:'高野真央',nameKo:'타카노 마오',nameEn:'Mao Takano',title:'恋の温度が1℃上がった瞬間',titleZh:'戀愛溫度升高1℃的瞬間',titleKo:'사랑의 온도가 1℃ 오른 순간',titleEn:'The Moment Love Rose 1°C',publisher:'集英社 週プレ',release:'2025.12',price:'デジタル版',asin:'B0G57RRNMZ',accent:'#F50057',bg:'#1a0008',tag:{zh:'ガチ恋必至',ko:'진심 연애 각',en:'MUST FALL IN LOVE'},desc:{zh:'天然魅力讓人不知不覺認真愛上。豐滿撩人的身材與迷人笑靨令無數粉絲心甘情願淪陷。SNS上被粉絲譽為「最讓人ガチ恋的女神」。',ko:'자연스럽게 진심으로 빠져들게 만드는 천연 매력. 풍만한 몸매와 매혹적인 미소로 수많은 팬을 진심 연애시키는 여신.',en:"Her natural charm pulls you in before you realize it. With an irresistible figure and warm smile, she's the idol fans genuinely fall in love with."},youtubeId:'hGcheAKMyN8'},
+  { id:7,rank:7,name:'東雲うみ',reading:'しののめうみ',nameZh:'东云海',nameKo:'시노노메 우미',nameEn:'Umi Shinonome',title:'きみはうみがすき',titleZh:'你喜歡大海嗎',titleKo:'너는 바다를 좋아해',titleEn:'Do You Love the Sea?',publisher:'トランスワールドジャパン',release:'2023.04',price:'¥3,300',asin:'B0BTM173N4',accent:'#00B0FF',bg:'#001a2e',tag:{zh:'二刀流女神',ko:'이도류 여신',en:'DUAL WEAPON GODDESS'},desc:{zh:'Gカップバストと100cmヒップを誇る「グラビア界の二刀流」。その豊かすぎる曲線美でSNSを席巻し、重版を重ねるほどの人気を誇るグラビア女王。',ko:'G컵 바스트와 100cm 힙을 자랑하는 \"그라비아계의 이도류\". 넘쳐흐르는 곡선미로 SNS를 석권, 중쇄를 거듭하는 그라비아 여왕.',en:"Dubbed the 'dual weapon' of gravure, she wields a G-cup bust and 100cm hips with devastating effect. Her photos sell out reprints and dominate social media feeds."},youtubeId:'6TYR82SV6k0'},
+  { id:8,rank:8,name:'葉月くれあ',reading:'はづきくれあ',nameZh:'叶月光',nameKo:'하즈키 쿠레아',nameEn:'Kurea Hazuki',title:'clarus',titleZh:'clarus（光明）',titleKo:'clarus（빛나는）',titleEn:'clarus',publisher:'講談社',release:'2025.08',price:'¥3,278',asin:'4065410819',accent:'#FFD700',bg:'#1a1500',tag:{zh:'ミスマガ女王',ko:'미스마가 그랑프리',en:'MISS MAGAZINE QUEEN'},desc:{zh:'「ミスマガジン2024」グランプリ受賞の史上最年長グランプリ。TikTokフォロワー急増、映画初出演も決定。あざと可愛さと大人っぽさが共存する次世代スター。',ko:'「미스마가진 2024」 그랑프리 역대 최연장 수상자. TikTok 팔로워 폭증, 영화 데뷔도 확정. 애교스러운 귀여움과 어른스러움이 공존하는 차세대 스타.',en:"Miss Magazine 2024's oldest-ever grand prize winner, with TikTok following that exploded overnight and a movie debut locked in. She's dangerously cute and charmingly calculated about it."},youtubeId:'y88OomGn42Q'},
+  { id:9,rank:9,name:'田中美久',reading:'たなかみく',nameZh:'田中美久',nameKo:'타나카 미쿠',nameEn:'Miku Tanaka',title:'ぜんぶ、ほんと',titleZh:'全部，都是真心',titleKo:'전부, 진짜야',titleEn:'All of It Is Real',publisher:'集英社',release:'2026.03',price:'¥3,300',asin:'4087902161',accent:'#FF6B6B',bg:'#1a0505',tag:{zh:'令和最強ボディ',ko:'레이와 최강 바디',en:'REIWA BODY GODDESS'},desc:{zh:'元HKT48の「令和のグラビアヴィーナス」。ポルトガルロケの3rd写真集で過去最大露出に挑戦。女優業でも頭角を現し、磨き続ける完璧なボディが日本最高峰と称される。',ko:'전 HKT48의 \"레이와 그라비아 비너스\". 포르투갈 로케 3rd 사진집에서 역대 최고 노출에 도전. 배우로도 두각을 나타내며 갈고닦은 완벽한 바디는 일본 최고봉.',en:"Former HKT48's 'Venus of the Reiwa era.' Her third photobook shot in Portugal marks her boldest work yet. Now a rising actress too — her relentlessly sculpted body is considered Japan's finest."},youtubeId:'S1RqitsyDWE'},
+  { id:10,rank:10,name:'本郷柚巴',reading:'ほんごうゆずは',nameZh:'本乡柚巴',nameKo:'혼고 유즈하',nameEn:'Yuzuha Hongo',title:'いつのまに、',titleZh:'不知不覺間，',titleKo:'어느새，',titleEn:'Before I Knew It,',publisher:'講談社',release:'2025.12',price:'¥3,300',asin:'4065419743',accent:'#FF9100',bg:'#1a0d00',tag:{zh:'グラビアシンデレラ',ko:'그라비아 신데렐라',en:'GRAVURE CINDERELLA'},desc:{zh:'元NMB48の「グラビアシンデレラ」が活動10周年でカナダ・バンクーバーから新境地を届ける。笑顔と色気の両立で女性ファンをも虜にする。ゆず史上最高ボディを大解放。',ko:'전 NMB48의 \"그라비아 신데렐라\"가 활동 10주년을 맞아 캐나다 밴쿠버에서 새로운 경지를 선보인다. 웃음과 색기를 동시에 갖춰 여성 팬까지 사로잡는다.',en:"Former NMB48's 'Gravure Cinderella' celebrates 10 years with her boldest Vancouver shoot yet. Her combination of bright smile and undeniable sensuality captures fans of every gender."},youtubeId:'b0en2DiR29M'},
+  { id:11,rank:11,name:'榎原依那',reading:'えのはらいな',nameZh:'榎原依那',nameKo:'에노하라 이나',nameEn:'Ina Enohara',title:'I am Ina',titleZh:'我就是依那',titleKo:'나는 이나',titleEn:'I am Ina',publisher:'講談社',release:'2025.12',price:'¥3,300',asin:'406541654X',accent:'#00E5FF',bg:'#00101a',tag:{zh:'令和の国宝BODY',ko:'레이와의 국보 바디',en:'NATIONAL TREASURE BODY'},desc:{zh:'デビュー5ヶ月でFRIDAY完売・重版を連発した「グラビア界の超新星」。フィジー＆シドニー2カ国ロケの2nd写真集でグラデミー賞MVG（大賞）を受賞した令和最注目のボディ。',ko:'데뷔 5개월에 FRIDAY 완판·중쇄를 연발한 \"그라비아계의 초신성\". 피지&시드니 2개국 로케 2nd 사진집으로 그라데미상 MVG(대상) 수상. 레이와 최고 주목 바디.',en:"The 'supernova' who sold out FRIDAY within months of debut and picked up the Grademie Award's grand prize. Shot across Fiji and Sydney, her 2nd book confirms she's the era's most electrifying new presence."},youtubeId:'82KJeb8Mib0'},
+  { id:12,rank:12,name:'南みゆか',reading:'みなみみゆか',nameZh:'南美结花',nameKo:'미나미 미유카',nameEn:'Miyuka Minami',title:'南風',titleZh:'南風',titleKo:'남풍（南風）',titleEn:'Southern Wind',publisher:'秋田書店',release:'2024.07',price:'¥3,300',asin:'4253011268',accent:'#76FF03',bg:'#061a00',tag:{zh:'現役JK最強ボディ',ko:'현역 JK 최강 바디',en:'STRONGEST JK BODY'},desc:{zh:'三重県出身の次世代アイドルグラドル。現役JK最強ボディと称され、名古屋から全国区へと躍進。フィリピンロケのファースト写真集で少女と大人の境界を鮮烈に刻み込む。',ko:'미에현 출신의 차세대 아이돌 그라비아. 현역 JK 최강 바디로 불리며 나고야에서 전국구로 약진. 필리핀 로케 1st 사진집에서 소녀와 어른의 경계를 강렬하게 새긴다.',en:"The next-gen idol-gravure hybrid from Mie Prefecture, known as the strongest active high schooler body in the game. Her Philippines debut photobook captures the electric moment between girlhood and womanhood."},youtubeId:'7tkBCkBZ3gw'},
+]
+
+// ─── i18n ────────────────────────────────────────────────────────────────────
+const LANGS = [
+  {code:'zh',label:'繁中',flag:'🇹🇼'},
+  {code:'ko',label:'한국어',flag:'🇰🇷'},
+  {code:'en',label:'EN',flag:'🇺🇸'},
+]
+const T = {
+  zh:{appTitle:'寫真集',appSub:'日本性感女神精選',searchPlaceholder:'搜尋女神姓名、作品名稱',count:n=>`共 ${n} 件`,sortRank:'人氣排行',sortPrice:'價格排序',publisher:'出版社',release:'發售日',price:'參考售價',name:'女神姓名',titleLabel:'寫真集名稱',buyAmazon:'前往Amazon購買',ytLabel:'📹 幕後花絮影片',ytPlay:'再生する',noResults:'找不到相符的結果',navBooks:'寫真集',navSaved:'收藏',navCart:'購物車',navMe:'我的',langLabel:'言語 / 語言'},
+  ko:{appTitle:'화보집',appSub:'일본 그라비아 아이돌 특선',searchPlaceholder:'아이돌 이름 · 작품명 검색',count:n=>`총 ${n}개`,sortRank:'인기순',sortPrice:'가격순',publisher:'출판사',release:'발매일',price:'참고 가격',name:'아이돌 이름',titleLabel:'화보집 제목',buyAmazon:'Amazon에서 구매하기',ytLabel:'📹 메이킹 영상',ytPlay:'재생',noResults:'결과가 없습니다',navBooks:'화보집',navSaved:'찜',navCart:'장바구니',navMe:'마이',langLabel:'언어'},
+  en:{appTitle:'Photo Books',appSub:'Japan Gravure Idol Collection',searchPlaceholder:'Search by idol name or title…',count:n=>`${n} items`,sortRank:'Popular',sortPrice:'Price',publisher:'Publisher',release:'Release',price:'Price',name:'Idol Name',titleLabel:'Title',buyAmazon:'Buy on Amazon',ytLabel:'📹 Making Video',ytPlay:'Play',noResults:'No results found',navBooks:'Books',navSaved:'Saved',navCart:'Cart',navMe:'Me',langLabel:'Language'},
+}
+const fontFamily = lang => lang==='ko'?"'Noto Sans KR',sans-serif":lang==='zh'?"'Noto Serif TC',serif":'inherit'
+const idolName = (idol,lang) => lang==='zh'?idol.nameZh:lang==='ko'?idol.nameKo:idol.nameEn
+const idolTitle = (idol,lang) => lang==='zh'?idol.titleZh:lang==='ko'?idol.titleKo:idol.titleEn
+
+// ─── State ───────────────────────────────────────────────────────────────────
+let state = {lang:'zh', search:'', sort:'rank', selected:null, ytId:null}
+
+// ─── YT Player ───────────────────────────────────────────────────────────────
+let ytPlayer = null
+function openYTPlayer(videoId) {
+  state.ytId = videoId
+  const overlay = document.getElementById('yt-player-overlay')
+  const frame = document.getElementById('yt-player-frame')
+  overlay.classList.add('open')
+  frame.innerHTML = '<div id="yt-target"></div>'
+  const init = () => {
+    ytPlayer = new window.YT.Player('yt-target', {
+      videoId,
+      playerVars:{autoplay:1,playsinline:1,rel:0,modestbranding:1},
+      events:{onReady:e=>e.target.playVideo()}
+    })
+  }
+  if (window.YT && window.YT.Player) { init() }
+  else {
+    if (!document.getElementById('yt-api-script')) {
+      const tag = document.createElement('script')
+      tag.id='yt-api-script'; tag.src='https://www.youtube.com/iframe_api'
+      document.head.appendChild(tag)
+    }
+    window.onYouTubeIframeAPIReady = init
+  }
+}
+function closeYTPlayer() {
+  document.getElementById('yt-player-overlay').classList.remove('open')
+  if (ytPlayer) { try{ytPlayer.destroy()}catch(_){} ytPlayer=null }
+  document.getElementById('yt-player-frame').innerHTML = ''
+  state.ytId = null
+}
+document.getElementById('yt-close-btn').onclick = closeYTPlayer
+document.getElementById('yt-player-overlay').onclick = e => { if(e.target===e.currentTarget)closeYTPlayer() }
+
+// ─── Modal ───────────────────────────────────────────────────────────────────
+let heroImgIdx = 0
+let heroImgEl = null
+
+function openModal(idol) {
+  state.selected = idol
+  const t = T[state.lang]
+  const ff = fontFamily(state.lang)
+  const name = idolName(idol, state.lang)
+  const title = idolTitle(idol, state.lang)
+
+  // Hero
+  const fallbackChar = document.getElementById('modal-hero-fallback-char')
+  fallbackChar.textContent = idol.name[0]
+  fallbackChar.style.color = idol.accent
+  document.getElementById('modal-hero-fallback').style.background = idol.bg
+
+  heroImgEl = document.getElementById('modal-hero-img')
+  heroImgEl.style.display = 'none'
+  heroImgIdx = 0
+  const srcs = [amazonImg(idol.asin)]
+  const tryNext = () => {
+    if (heroImgIdx < srcs.length) {
+      heroImgEl.src = srcs[heroImgIdx]
+      heroImgEl.style.display = 'block'
+      heroImgEl.onload = () => {}
+      heroImgEl.onerror = () => { heroImgIdx++; tryNext() }
+    }
+  }
+  tryNext()
+
+  // Hero info
+  const badge = document.getElementById('modal-tag-badge')
+  badge.textContent = idol.tag[state.lang]
+  badge.style.background = idol.accent
+  badge.style.fontFamily = ff
+  document.getElementById('modal-title-main').textContent = title
+  document.getElementById('modal-title-main').style.fontFamily = ff
+  document.getElementById('modal-name-sub').textContent = `${name}（${idol.name}）`
+  document.getElementById('modal-name-sub').style.fontFamily = ff
+  document.getElementById('modal-sheet').style.border = `1px solid ${idol.accent}25`
+
+  // Accent line
+  document.getElementById('modal-accent-line').style.background = `linear-gradient(to right,${idol.accent}cc,transparent)`
+
+  // CTA
+  const cta = document.getElementById('modal-cta')
+  cta.innerHTML = `
+    <a class="btn-amazon" href="${affiliateLink(idol.asin)}" target="_blank" rel="noopener noreferrer" style="font-family:${ff}">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M13.958 10.09c0 1.232.029 2.256-.591 3.351-.502.891-1.301 1.438-2.186 1.438-1.214 0-1.922-.924-1.922-2.292 0-2.692 2.415-3.182 4.699-3.182v.685zm3.186 7.705c-.209.189-.512.201-.745.074-1.052-.872-1.238-1.276-1.814-2.106-1.734 1.767-2.962 2.297-5.209 2.297-2.66 0-4.731-1.641-4.731-4.925 0-2.565 1.391-4.309 3.37-5.164 1.715-.754 4.11-.891 5.942-1.095v-.41c0-.753.06-1.642-.383-2.294-.385-.579-1.124-.817-1.776-.817-1.205 0-2.277.618-2.54 1.897-.054.284-.265.562-.549.576l-3.076-.333c-.259-.058-.547-.266-.472-.661.707-3.716 4.066-4.835 7.076-4.835 1.536 0 3.547.41 4.761 1.568 1.536 1.436 1.387 3.352 1.387 5.441v4.927c0 1.484.614 2.135 1.192 2.935.203.285.248.626-.011.838-.645.537-1.79 1.536-2.423 2.097l-.009-.011z"/><path d="M20.945 19.745c-2.775 1.755-6.809 2.689-10.28 2.689-4.862 0-9.249-1.798-12.565-4.793-.26-.235-.028-.556.285-.374 3.575 2.078 7.997 3.329 12.562 3.329 3.079 0 6.466-.638 9.584-1.96.47-.201.863.309.414.609z"/></svg>
+      ${t.buyAmazon} · ${idol.price}
+    </a>
+    <div class="btn-yt-link" id="modal-yt-btn" style="font-family:${ff}">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="#FF0000"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      ${t.ytLabel}
+    </div>
+  `
+  document.getElementById('modal-yt-btn').onclick = () => { closeModal(); openYTPlayer(idol.youtubeId) }
+
+  // YT thumb
+  document.getElementById('modal-yt-label-text').textContent = t.ytLabel
+  document.getElementById('modal-yt-label-text').style.fontFamily = ff
+  document.getElementById('yt-thumb-img').src = `https://img.youtube.com/vi/${idol.youtubeId}/hqdefault.jpg`
+  document.getElementById('yt-play-circle').style.border = `2.5px solid ${idol.accent}`
+  document.getElementById('yt-play-circle').style.boxShadow = `0 0 32px ${idol.accent}88`
+  document.getElementById('yt-play-circle').querySelector('svg').setAttribute('fill', idol.accent)
+  document.getElementById('yt-play-label').textContent = t.ytPlay
+  document.getElementById('yt-thumb-card').onclick = () => { closeModal(); openYTPlayer(idol.youtubeId) }
+
+  // Desc
+  document.getElementById('modal-desc').textContent = idol.desc[state.lang]
+  document.getElementById('modal-desc').style.fontFamily = ff
+
+  // Details table
+  const details = [
+    [t.name, `${name}（${idol.name}）`],
+    [t.titleLabel, title],
+    [t.publisher, idol.publisher],
+    [t.release, idol.release],
+    [t.price, idol.price],
+  ]
+  const table = document.getElementById('modal-details-table')
+  table.innerHTML = details.map(([label,value],i) => `
+    <div class="detail-row" style="${i===details.length-1?'border-bottom:none':''}">
+      <span class="detail-label" style="font-family:${ff}">${label}</span>
+      <span class="detail-value" style="font-family:${ff}">${value}</span>
+    </div>
+  `).join('')
+
+  document.getElementById('modal-overlay').classList.add('open')
+  document.body.style.overflow = 'hidden'
+}
+function closeModal() {
+  document.getElementById('modal-overlay').classList.remove('open')
+  document.body.style.overflow = ''
+  state.selected = null
+}
+document.getElementById('modal-close-btn').onclick = closeModal
+document.getElementById('modal-overlay').onclick = e => { if(e.target===e.currentTarget)closeModal() }
+
+// ─── Render ──────────────────────────────────────────────────────────────────
+function render() {
+  const t = T[state.lang]
+  const ff = fontFamily(state.lang)
+
+  // Sidebar
+  document.getElementById('sb-logo').textContent = t.appTitle
+  document.getElementById('sb-logo').style.fontFamily = ff
+  document.getElementById('sb-sub').textContent = t.appSub
+  document.getElementById('sb-lang-label').textContent = t.langLabel
+
+  const navItems = [
+    {icon:'📸',key:'navBooks',active:true},
+    {icon:'❤️',key:'navSaved'},
+    {icon:'🛒',key:'navCart'},
+    {icon:'👤',key:'navMe'},
+  ]
+  document.getElementById('sb-nav').innerHTML = navItems.map(item=>`
+    <button class="sidebar-nav-item${item.active?' active':''}" style="font-family:${ff}">
+      <span class="sidebar-nav-icon">${item.icon}</span>${t[item.key]}
+    </button>
+  `).join('')
+
+  document.getElementById('sb-lang-btns').innerHTML = LANGS.map(l=>`
+    <button class="sidebar-lang-btn${state.lang===l.code?' active':''}" data-lang="${l.code}">
+      ${l.flag} ${l.label}
+    </button>
+  `).join('')
+  document.querySelectorAll('.sidebar-lang-btn').forEach(btn=>{
+    btn.onclick = () => { state.lang = btn.dataset.lang; render() }
+  })
+
+  // Header
+  document.getElementById('h-title').textContent = t.appTitle
+  document.getElementById('h-title').style.fontFamily = ff
+  document.getElementById('h-sub').textContent = t.appSub
+
+  document.getElementById('h-lang').innerHTML = LANGS.map(l=>`
+    <button class="lang-btn${state.lang===l.code?' active':''}" data-lang="${l.code}">
+      ${l.flag} ${l.label}
+    </button>
+  `).join('')
+  document.querySelectorAll('.lang-btn').forEach(btn=>{
+    btn.onclick = () => { state.lang = btn.dataset.lang; render() }
+  })
+
+  document.getElementById('search-input').placeholder = t.searchPlaceholder
+  document.getElementById('search-input').style.fontFamily = ff
+
+  // Sort buttons
+  document.getElementById('sort-btns').innerHTML = [['rank',t.sortRank],['price',t.sortPrice]].map(([val,label])=>`
+    <button class="sort-btn${state.sort===val?' active':''}" data-sort="${val}" style="font-family:${ff}">${label}</button>
+  `).join('')
+  document.querySelectorAll('.sort-btn').forEach(btn=>{
+    btn.onclick = () => { state.sort = btn.dataset.sort; render() }
+  })
+
+  // Filter
+  const q = state.search.trim().toLowerCase()
+  let list = idols.filter(idol => {
+    if (!q) return true
+    return [idol.name,idol.reading,idol.nameZh,idol.nameKo,idol.nameEn,idol.title,idol.titleZh,idol.titleKo,idol.titleEn]
+      .some(s => s?.toLowerCase().includes(q))
+  })
+  if (state.sort === 'rank') list = [...list].sort((a,b)=>a.rank-b.rank)
+
+  document.getElementById('result-count').textContent = t.count(list.length)
+
+  // Cards
+  const grid = document.getElementById('card-grid')
+  grid.innerHTML = list.length === 0
+    ? `<div class="no-results" style="font-family:${ff}">${t.noResults}</div>`
+    : list.map((idol,i) => {
+        const name = idolName(idol,state.lang)
+        const title = idolTitle(idol,state.lang)
+        return `
+          <article class="card" data-id="${idol.id}" style="animation:fadeInUp .45s ease ${i*.06}s both;box-shadow:0 6px 28px rgba(0,0,0,.6),0 0 0 1px ${idol.accent}28">
+            <div class="card-img">
+              <div class="card-img-inner">
+                <div class="card-fallback">
+                  <span class="card-fallback-char" style="color:${idol.accent}">${idol.name[0]}</span>
+                </div>
+                <img class="card-cover" data-src="${amazonImg(idol.asin)}" data-fallback="true"
+                  alt="${idol.name}"
+                  onload="this.classList.add('loaded')"
+                  onerror="this.style.display='none'" />
+              </div>
+              <div class="card-grad"></div>
+              <div class="card-rank" style="border:1px solid ${idol.accent}60;color:${idol.accent}">#${idol.rank}</div>
+              <div class="card-tag" style="background:${idol.accent};font-family:${ff}">${idol.tag[state.lang]}</div>
+              <div class="card-yt-badge">
+                <svg width="8" height="8" viewBox="0 0 10 10" fill="white"><polygon points="0,0 10,5 0,10"/></svg>
+                動画あり
+              </div>
+              <div class="card-title-text" style="font-family:${ff}">${title}</div>
+            </div>
+            <div class="card-body">
+              <div class="card-name" style="font-family:${ff}">${name}</div>
+              <div class="card-meta">${idol.publisher} · ${idol.release}</div>
+              <div class="card-price" style="color:${idol.accent};background:${idol.accent}18;border:1px solid ${idol.accent}35">${idol.price}</div>
+            </div>
+          </article>
+        `
+      }).join('')
+
+  // Lazy-load images
+  grid.querySelectorAll('.card-cover').forEach(img => {
+    img.src = img.dataset.src
+  })
+
+  // Card click
+  grid.querySelectorAll('.card').forEach(card=>{
+    const idol = idols.find(x=>x.id===+card.dataset.id)
+    card.onclick = () => openModal(idol)
+    card.onmousedown = () => card.style.transform='scale(0.955)'
+    card.onmouseup = () => card.style.transform=''
+    card.onmouseleave = () => card.style.transform=''
+  })
+
+  // Tab bar
+  document.getElementById('tabbar').innerHTML = navItems.map(item=>`
+    <button class="tab-btn${item.active?' active':''}" style="font-family:${ff}">
+      <span class="tab-icon">${item.icon}</span>
+      <span class="tab-label">${t[item.key]}</span>
+    </button>
+  `).join('')
+}
+
+// ─── Search ──────────────────────────────────────────────────────────────────
+document.getElementById('search-input').addEventListener('input', e => {
+  state.search = e.target.value
+  document.getElementById('search-clear').style.display = state.search ? 'flex' : 'none'
+  render()
+})
+document.getElementById('search-clear').onclick = () => {
+  state.search = ''
+  document.getElementById('search-input').value = ''
+  document.getElementById('search-clear').style.display = 'none'
+  render()
+}
+
+// ─── Keyboard ────────────────────────────────────────────────────────────────
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    if (state.ytId) closeYTPlayer()
+    else if (state.selected) closeModal()
+  }
+})
+
+// ─── Init ─────────────────────────────────────────────────────────────────────
+render()
+</script>
+</body>
+</html>
