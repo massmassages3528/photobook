@@ -2,10 +2,17 @@
    GRAVURE COLLECTION — Luxe Sensual Design System
    Aesthetic: Deep Crimson × Obsidian × Champagne Gold
    Tone: High-fashion editorial, velvet dark, breathable tension
+   ✅ SEO改善：
+     - Google Fontsをサンセリフ（Noto Sans TC）に統一
+     - FAQ section スタイル充実
+     - btn-price-check（新CTA）追加
+     - 不要なserifフォント読み込みを削除して速度改善
    ══════════════════════════════════════════════════════════════════ */
 
 /* ── Google Fonts ──────────────────────────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Noto+Serif+TC:wght@300;400;700;900&family=Noto+Sans+KR:wght@300;400;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+/* ✅ 変更：Cormorant Garamond/Playfair Displayを削除、Noto Sans TCに統一
+   → フォントリクエスト数削減でCore Web Vitals改善 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Sans+KR:wght@400;700&display=swap');
 
 /* ── Design Tokens ─────────────────────────────────────────────────── */
 :root {
@@ -62,6 +69,7 @@ body {
   min-height: 100dvh;
   background: var(--obsidian);
   color: var(--text-primary);
+  /* ✅ 変更：サンセリフフォントに統一（台湾ユーザーの可読性向上） */
   font-family: 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
   overflow-x: hidden;
   cursor: default;
@@ -124,15 +132,16 @@ body::after {
 .sidebar-brand { padding: 0 26px 0; margin-bottom: 4px; }
 
 .sidebar-logo {
-  font-size: 24px; font-weight: 700;
-  letter-spacing: .08em;
+  font-size: 20px; font-weight: 700;
+  letter-spacing: .04em;
   background: linear-gradient(135deg, var(--gold-hot) 0%, var(--gold) 60%, var(--gold-dim) 100%);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-  line-height: 1.1;
+  line-height: 1.2;
+  font-family: 'Noto Sans TC', sans-serif;
 }
 
 .sidebar-sub {
-  font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase;
+  font-size: 9.5px; letter-spacing: .15em; text-transform: uppercase;
   color: var(--text-muted);
   font-family: 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
   margin-top: 5px;
@@ -159,7 +168,7 @@ body::after {
 .sidebar-nav-item {
   display: flex; align-items: center; gap: 12px;
   padding: 11px 14px; border-radius: 10px;
-  font-size: 13.5px; letter-spacing: .06em;
+  font-size: 13.5px; letter-spacing: .04em;
   color: var(--text-muted);
   transition: background var(--t-fast) var(--ease-snap),
               color var(--t-fast) var(--ease-snap),
@@ -191,13 +200,13 @@ body::after {
 .sidebar-lang { padding: 0 14px; }
 .sidebar-lang-label {
   padding: 0 14px 10px;
-  font-size: 9px; letter-spacing: .2em; text-transform: uppercase;
-  color: var(--text-ghost); font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: 9px; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--text-ghost); font-family: 'Noto Sans TC', sans-serif;
 }
 .sidebar-lang-btns { display: flex; flex-direction: column; gap: 2px; }
 .sidebar-lang-btn {
   padding: 8px 14px; border-radius: 8px; text-align: left;
-  font-size: 12.5px; letter-spacing: .06em; color: var(--text-muted);
+  font-size: 12.5px; letter-spacing: .04em; color: var(--text-muted);
   transition: background var(--t-fast) var(--ease-snap), color var(--t-fast) var(--ease-snap);
 }
 .sidebar-lang-btn:hover { background: var(--surface-2); color: var(--text-primary); }
@@ -238,21 +247,22 @@ body::after {
 .header-title-block {}
 
 .header-title {
-  font-size: 30px; font-weight: 700; line-height: 1;
-  letter-spacing: .06em;
+  font-size: 28px; font-weight: 700; line-height: 1.1;
+  letter-spacing: .04em;
   background: linear-gradient(135deg, var(--champagne) 0%, var(--gold-bright) 45%, var(--gold) 100%);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  font-family: 'Noto Sans TC', sans-serif;
 }
 
 .header-sub {
-  margin-top: 7px; font-size: 10px; letter-spacing: .22em; text-transform: uppercase;
-  color: var(--text-muted); font-style: italic;
+  margin-top: 7px; font-size: 10px; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--text-muted);
 }
 
 /* Lang switcher */
 .header-lang-row { display: flex; gap: 6px; flex-shrink: 0; }
 .lang-btn {
-  padding: 5px 12px; border-radius: 5px; font-size: 11px; letter-spacing: .05em;
+  padding: 5px 12px; border-radius: 5px; font-size: 11px; letter-spacing: .04em;
   border: 1px solid var(--border-gold);
   color: var(--text-muted);
   transition: all var(--t-fast) var(--ease-snap);
@@ -283,6 +293,7 @@ body::after {
   flex: 1; background: none; border: none; outline: none;
   font-size: 13.5px; color: var(--text-primary);
   letter-spacing: .04em;
+  font-family: 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
 }
 .search-input::placeholder { color: var(--text-ghost); }
 .search-clear {
@@ -302,7 +313,7 @@ body::after {
 }
 .sort-btns { display: flex; gap: 6px; }
 .sort-btn {
-  padding: 5px 16px; border-radius: 5px; font-size: 11px; letter-spacing: .1em;
+  padding: 5px 16px; border-radius: 5px; font-size: 11px; letter-spacing: .08em;
   border: 1px solid var(--border-gold); color: var(--text-muted);
   transition: all var(--t-fast) var(--ease-snap);
 }
@@ -314,7 +325,28 @@ body::after {
 }
 .result-count {
   font-size: 11px; color: var(--text-muted);
-  letter-spacing: .12em; font-style: italic;
+  letter-spacing: .1em;
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   INTRO SECTION
+   ✅ SEO改善：intro文をSEOテキストとして見やすくスタイリング
+   ════════════════════════════════════════════════════════════════════ */
+.intro-fetish {
+  padding: 32px 36px 20px;
+  border-bottom: 1px solid var(--border-gold);
+}
+.intro-fetish h2 {
+  font-size: 16px; font-weight: 700;
+  letter-spacing: .06em; color: var(--gold-bright);
+  margin-bottom: 10px;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+.intro-fetish p {
+  font-size: 13.5px; line-height: 1.9;
+  color: var(--text-secondary); letter-spacing: .04em;
+  max-width: 600px;
+  font-family: 'Noto Sans TC', sans-serif;
 }
 
 /* ════════════════════════════════════════════════════════════════════
@@ -335,7 +367,6 @@ body::after {
   position: relative;
   transition: transform var(--t-mid) var(--ease-silk),
               box-shadow var(--t-mid) var(--ease-silk);
-  /* Default glow applied via JS per-accent */
 }
 
 /* Card shimmer border */
@@ -347,6 +378,12 @@ body::after {
 }
 
 .card:hover { transform: translateY(-6px) scale(1.012); }
+/* ✅ アクセシビリティ：フォーカス時のスタイル */
+.card:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+  transform: translateY(-4px);
+}
 
 /* ── Card Image area ─────────────────────────────────────────────────── */
 .card-img {
@@ -357,7 +394,7 @@ body::after {
   display: flex; align-items: center; justify-content: center;
 }
 .card-fallback-char {
-  font-size: 86px; font-weight: 900; font-family: 'Playfair Display', serif;
+  font-size: 86px; font-weight: 900; font-family: 'Noto Sans TC', sans-serif;
   opacity: .1; user-select: none; line-height: 1;
   transition: opacity var(--t-slow) var(--ease-silk);
 }
@@ -372,7 +409,7 @@ body::after {
 .card-cover.loaded { opacity: 1; }
 .card:hover .card-cover.loaded { transform: scale(1.04); }
 
-/* Multi-layer gradient for sensual depth */
+/* Multi-layer gradient */
 .card-grad {
   position: absolute; inset: 0; z-index: 1;
   background:
@@ -380,21 +417,20 @@ body::after {
     linear-gradient(to bottom, rgba(8,7,13,.3) 0%, transparent 30%);
 }
 
-/* Hover overlay — color breathe */
+/* Hover overlay */
 .card-hover-veil {
   position: absolute; inset: 0; z-index: 2;
   opacity: 0;
   transition: opacity var(--t-mid) var(--ease-silk);
-  /* background set via JS with accent color */
 }
 .card:hover .card-hover-veil { opacity: 1; }
 
 /* Rank badge */
 .card-rank {
   position: absolute; top: 10px; left: 10px; z-index: 4;
-  font-size: 10px; letter-spacing: .1em;
+  font-size: 10px; letter-spacing: .08em;
   padding: 3px 8px; border-radius: 4px;
-  font-family: 'Cormorant Garamond', serif; font-weight: 600; font-style: italic;
+  font-family: 'Noto Sans TC', sans-serif; font-weight: 700;
   backdrop-filter: blur(10px);
   background: rgba(8,7,13,.55);
 }
@@ -402,9 +438,10 @@ body::after {
 /* Tag */
 .card-tag {
   position: absolute; top: 10px; right: 10px; z-index: 4;
-  font-size: 8.5px; letter-spacing: .12em;
+  font-size: 8.5px; letter-spacing: .1em;
   padding: 3px 8px; border-radius: 3px;
   color: #000; font-weight: 900; text-transform: uppercase;
+  font-family: 'Noto Sans TC', sans-serif;
 }
 
 /* YT badge */
@@ -413,13 +450,13 @@ body::after {
   display: flex; align-items: center; gap: 5px;
   font-size: 9px; color: rgba(255,255,255,.65);
   background: rgba(0,0,0,.5); backdrop-filter: blur(8px);
-  padding: 3px 8px; border-radius: 4px; letter-spacing: .06em;
+  padding: 3px 8px; border-radius: 4px; letter-spacing: .04em;
 }
 
 /* Title on image */
 .card-title-text {
   position: absolute; bottom: 10px; left: 11px; right: 11px; z-index: 4;
-  font-size: 11.5px; line-height: 1.38; letter-spacing: .05em;
+  font-size: 11.5px; line-height: 1.38; letter-spacing: .04em;
   color: rgba(255,255,255,.82);
   text-shadow: 0 1px 10px rgba(0,0,0,.95), 0 0 30px rgba(0,0,0,.7);
 }
@@ -427,22 +464,23 @@ body::after {
 /* ── Card Body ───────────────────────────────────────────────────────── */
 .card-body { padding: 13px 15px 15px; }
 .card-name {
-  font-size: 14.5px; font-weight: 700; letter-spacing: .07em;
+  font-size: 14.5px; font-weight: 700; letter-spacing: .04em;
   color: var(--text-primary); margin-bottom: 4px;
+  font-family: 'Noto Sans TC', sans-serif;
 }
 .card-meta {
-  font-size: 10px; color: var(--text-muted); letter-spacing: .06em;
-  margin-bottom: 9px; font-style: italic;
+  font-size: 10px; color: var(--text-muted); letter-spacing: .04em;
+  margin-bottom: 9px;
 }
 .card-price {
   display: inline-block; font-size: 11px; font-weight: 700;
-  letter-spacing: .09em; padding: 4px 11px; border-radius: 4px;
+  letter-spacing: .07em; padding: 4px 11px; border-radius: 4px;
 }
 
 /* No results */
 .no-results {
   grid-column: 1 / -1; text-align: center; padding: 100px 0;
-  color: var(--text-ghost); font-size: 15px; letter-spacing: .12em; font-style: italic;
+  color: var(--text-ghost); font-size: 15px; letter-spacing: .1em;
 }
 
 /* ── Tab bar ─────────────────────────────────────────────────────────── */
@@ -461,7 +499,59 @@ body::after {
 }
 .tab-btn.active { color: var(--gold-bright); }
 .tab-icon { font-size: 21px; line-height: 1; }
-.tab-label { font-size: 10px; letter-spacing: .06em; }
+.tab-label { font-size: 10px; letter-spacing: .04em; }
+
+/* ════════════════════════════════════════════════════════════════════
+   FAQ SECTION
+   ✅ SEO改善：FAQページをスタイリング（検索流入 & FAQ Rich Results）
+   ════════════════════════════════════════════════════════════════════ */
+.faq-section {
+  padding: 40px 36px 60px;
+  border-top: 1px solid var(--border-gold);
+  max-width: 760px;
+}
+
+.faq-section h2 {
+  font-size: 18px; font-weight: 700;
+  letter-spacing: .06em; color: var(--gold-bright);
+  margin-bottom: 28px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-gold);
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
+.faq-item {
+  margin-bottom: 28px;
+  padding: 20px 22px;
+  background: var(--surface-1);
+  border: 1px solid var(--border-gold);
+  border-radius: 12px;
+  transition: background var(--t-fast) var(--ease-snap),
+              border-color var(--t-fast) var(--ease-snap);
+}
+
+.faq-item:hover {
+  background: var(--surface-2);
+  border-color: rgba(201,169,110,.3);
+}
+
+.faq-item h3 {
+  font-size: 14px; font-weight: 700;
+  color: var(--gold-hot); letter-spacing: .04em;
+  margin-bottom: 10px; line-height: 1.5;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
+.faq-item p {
+  font-size: 13.5px; line-height: 1.85;
+  color: var(--text-secondary); letter-spacing: .04em;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
+.faq-item strong {
+  color: var(--text-primary);
+  font-weight: 700;
+}
 
 /* ════════════════════════════════════════════════════════════════════
    DETAIL MODAL
@@ -485,7 +575,6 @@ body::after {
   overflow: hidden;
   transform: translateY(50px);
   transition: transform .4s var(--ease-silk);
-  /* border applied via JS */
 }
 .modal-overlay.open .modal-sheet { transform: translateY(0); }
 
@@ -520,7 +609,7 @@ body::after {
   display: flex; align-items: center; justify-content: center;
 }
 .modal-hero-fallback-char {
-  font-size: 140px; font-family: 'Playfair Display', serif; font-weight: 900;
+  font-size: 140px; font-family: 'Noto Sans TC', sans-serif; font-weight: 900;
   opacity: .07; user-select: none; line-height: 1;
 }
 .modal-hero-img {
@@ -550,14 +639,16 @@ body::after {
 }
 .modal-tag-badge {
   display: inline-block; font-size: 9.5px; font-weight: 900;
-  letter-spacing: .14em; padding: 4px 11px; border-radius: 3px;
+  letter-spacing: .12em; padding: 4px 11px; border-radius: 3px;
   color: #000; margin-bottom: 11px; text-transform: uppercase;
+  font-family: 'Noto Sans TC', sans-serif;
 }
 .modal-title-main {
   font-size: 21px; font-weight: 700; line-height: 1.3;
-  color: #fff; letter-spacing: .05em; margin-bottom: 7px;
+  color: #fff; letter-spacing: .04em; margin-bottom: 7px;
+  font-family: 'Noto Sans TC', sans-serif;
 }
-.modal-name-sub { font-size: 13px; color: rgba(255,255,255,.6); letter-spacing: .07em; }
+.modal-name-sub { font-size: 13px; color: rgba(255,255,255,.6); letter-spacing: .06em; }
 
 /* Close btn */
 .modal-close-btn {
@@ -571,6 +662,7 @@ body::after {
               border-color var(--t-fast) var(--ease-snap);
 }
 .modal-close-btn:hover { background: rgba(160,24,50,.5); border-color: rgba(200,37,74,.4); color: #fff; }
+.modal-close-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 
 /* ── Modal Right (Content) ────────────────────────────────────────────── */
 .modal-right { overflow-y: auto; max-height: 60dvh; }
@@ -584,6 +676,7 @@ body::after {
 /* CTA area */
 .cta-area { padding: 18px 18px 14px; display: flex; flex-direction: column; gap: 10px; }
 
+/* ✅ SEO改善：Amazonボタンに価格表示を追加 */
 .btn-amazon {
   display: flex; align-items: center; gap: 11px;
   padding: 14px 18px; border-radius: 11px;
@@ -598,6 +691,22 @@ body::after {
   transform: translateY(-2px);
   box-shadow: 0 8px 28px rgba(255,153,0,.35);
 }
+.btn-amazon:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.btn-amazon-price {
+  margin-left: auto; font-size: 12px; font-weight: 700;
+  background: rgba(0,0,0,.15); padding: 2px 8px; border-radius: 4px;
+}
+
+/* ✅ SEO改善：価格確認ボタン（2nd CTA） */
+.btn-price-check {
+  display: flex; align-items: center;
+  padding: 10px 18px; border-radius: 11px;
+  border: 1px solid rgba(255,153,0,.3);
+  font-size: 12.5px; color: var(--text-secondary);
+  transition: background var(--t-fast) var(--ease-snap), border-color var(--t-fast) var(--ease-snap);
+  cursor: pointer;
+}
+.btn-price-check:hover { background: rgba(255,153,0,.08); border-color: rgba(255,153,0,.5); }
 
 .btn-yt-link {
   display: flex; align-items: center; gap: 11px;
@@ -611,8 +720,8 @@ body::after {
 
 /* Section label */
 .modal-section-label {
-  font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase;
-  color: var(--text-muted); font-style: italic;
+  font-size: 9.5px; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--text-muted);
   padding: 0 18px; margin-bottom: 9px;
 }
 
@@ -627,6 +736,7 @@ body::after {
   transition: transform .45s var(--ease-silk);
 }
 .yt-thumb-card:hover img { transform: scale(1.05); }
+.yt-thumb-card:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 .yt-overlay-dark { position: absolute; inset: 0; background: rgba(0,0,0,.38); }
 .yt-play-center {
   position: absolute; inset: 0;
@@ -645,7 +755,7 @@ body::after {
   display: flex; align-items: center; gap: 5px;
   background: rgba(0,0,0,.65); backdrop-filter: blur(8px);
   padding: 4px 9px; border-radius: 4px;
-  font-size: 10px; color: rgba(255,255,255,.8); letter-spacing: .07em;
+  font-size: 10px; color: rgba(255,255,255,.8); letter-spacing: .06em;
 }
 .yt-label-left {
   position: absolute; bottom: 9px; left: 10px;
@@ -656,8 +766,9 @@ body::after {
 /* Description */
 .modal-desc {
   margin: 14px 18px;
-  font-size: 13.5px; line-height: 1.82;
+  font-size: 13.5px; line-height: 1.85;
   color: var(--text-secondary); letter-spacing: .04em;
+  font-family: 'Noto Sans TC', sans-serif;
 }
 
 /* Details table */
@@ -674,11 +785,13 @@ body::after {
 .detail-row:hover { background: var(--surface-1); }
 .detail-label {
   width: 96px; flex-shrink: 0;
-  font-size: 10px; letter-spacing: .14em; text-transform: uppercase;
-  color: var(--gold-dim); font-style: italic; padding-top: 1px;
+  font-size: 10px; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--gold-dim); padding-top: 1px;
+  font-family: 'Noto Sans TC', sans-serif;
 }
 .detail-value {
   font-size: 13.5px; color: var(--text-primary); letter-spacing: .04em; flex: 1;
+  font-family: 'Noto Sans TC', sans-serif;
 }
 
 /* ════════════════════════════════════════════════════════════════════
@@ -704,12 +817,14 @@ body::after {
 .yt-close-btn {
   margin-top: 22px; padding: 11px 28px; border-radius: 8px;
   background: var(--surface-2); border: 1px solid var(--border-gold);
-  font-size: 12.5px; letter-spacing: .12em; color: var(--text-muted);
+  font-size: 12.5px; letter-spacing: .1em; color: var(--text-muted);
+  font-family: 'Noto Sans TC', sans-serif;
   transition: background var(--t-fast) var(--ease-snap),
               color var(--t-fast) var(--ease-snap),
               border-color var(--t-fast) var(--ease-snap);
 }
 .yt-close-btn:hover { background: var(--surface-3); color: var(--text-primary); border-color: var(--gold); }
+.yt-close-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 
 /* ════════════════════════════════════════════════════════════════════
    ANIMATIONS
@@ -724,6 +839,15 @@ body::after {
   50% { opacity: 1; }
 }
 
+/* ✅ アクセシビリティ：モーション軽減設定 */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
+
 /* ════════════════════════════════════════════════════════════════════
    RESPONSIVE — Mobile
    ════════════════════════════════════════════════════════════════════ */
@@ -731,12 +855,14 @@ body::after {
   .app-sidebar { display: none; }
   .app-tabbar  { display: flex; }
   .app-header  { padding: 16px 16px 13px; }
-  .header-title { font-size: 24px; }
+  .header-title { font-size: 22px; }
   .header-top   { margin-bottom: 13px; }
   .card-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 13px; padding: 16px 16px 80px;
   }
+  .intro-fetish { padding: 20px 16px 14px; }
+  .faq-section  { padding: 28px 16px 80px; }
 }
 
 @media (max-width: 400px) {
