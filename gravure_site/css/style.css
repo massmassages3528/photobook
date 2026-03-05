@@ -172,14 +172,16 @@ body {
 }
 
 /* ── Modal ───────────────── */
-.modal-overlay {
+.modal-overlay,
+.yt-player-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,.75);
-  backdrop-filter: blur(16px);
-  display: flex;
-  justify-content: center;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(10px);
+  display: none; /* ← これが重要 */
   align-items: center;
+  justify-content: center;
+  z-index: 9999;
 }
 
 .modal-sheet {
