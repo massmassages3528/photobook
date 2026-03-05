@@ -212,6 +212,23 @@ body::after {
   display: flex; flex-direction: column;
 }
 
+.intro-fetish {
+  margin: 80px 0;
+  max-width: 720px;
+  line-height: 1.6;
+}
+
+.intro-fetish h2 {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.intro-fetish p {
+  font-size: 16px;
+  opacity: 0.8;
+}
+
 /* ── Header ─────────────────────────────────────────────────────────── */
 .app-header {
   position: sticky; top: 0; z-index: 50;
